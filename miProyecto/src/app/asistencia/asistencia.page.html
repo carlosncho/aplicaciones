@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="success">
+    <!-- boton volver atras para la camara -->
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>    
+    <ion-title >Registro Clase</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Clase</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label>Profesor</ion-label>
+      <ion-input disabled="true" placeholder="Nombre Profesor"></ion-input>
+      <ion-label>Hora clase</ion-label>
+      <ion-input disabled="true" placeholder="HH:MM"></ion-input>
+      <ion-label>Sala</ion-label>
+      <ion-input disabled="true" placeholder="Nro Sala"></ion-input>
+      <ion-label>Dia</ion-label>
+      <ion-input disabled="true" placeholder="Ej: martes"></ion-input>
+    </ion-card-content>
+    <ion-card-header>
+      <ion-card-title>Datos Alumno</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="formularioAsistencia" (key.enter)="registrar()">
+        <ion-item>
+          <ion-label position="floating">Nombre Completo</ion-label>
+          <ion-input formControlName="nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Rut Alumno</ion-label>
+          <ion-input formControlName="rut"></ion-input>
+        </ion-item>
+        <br>
+        <ion-button (click)="registrar()" >ingresar asistencia</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+<ion-footer color="success">
+</ion-footer>
