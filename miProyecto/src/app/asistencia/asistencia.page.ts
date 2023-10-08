@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -9,39 +9,43 @@ import { AlertController } from '@ionic/angular';
 })
 export class AsistenciaPage implements OnInit {
 
-  formularioAsistencia : FormGroup;
+  formularioAsistencia: FormGroup;
 
   constructor(public fb: FormBuilder, public alertController: AlertController) {
-
+    
     this.formularioAsistencia = this.fb.group({
-      'nombre': new FormControl("", Validators.required),
-      'rut': new FormControl("",Validators.required)
-    })
+      'nombre': ['', Validators.required],
+      'rut': ['', Validators.required]
+    });
   }
 
   ngOnInit() {
+    
   }
 
-  async registrar(){
-    var f = this.formularioAsistencia.value;
+  async registrar() {
     
-    if (this.formularioAsistencia.invalid){
-      const alert= await this.alertController.create({
+    const f = this.formularioAsistencia.value;
+
+    
+    if (this.formularioAsistencia.invalid) {
+      const alert = await this.alertController.create({
         header: 'Datos incompletos',
         message: 'Tienes que llenar todos los datos',
         buttons: ['Aceptar']
       });
-      
+
       await alert.present();
       return;
     }
-  
-    var alumno= {
+
+    
+    const alumno = {
       nombre: f.nombre,
       rut: f.rut
-    }
+    };
 
-    localStorage.setItem('alumno',JSON.stringify(alumno));
-  
+    
+    localStorage.setItem('alumno', JSON.stringify(alumno));
   }
 }

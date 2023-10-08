@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,FormControl,FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -7,6 +7,7 @@ import { AlertController } from '@ionic/angular';
   templateUrl: './registro.page.html',
   styleUrls: ['./registro.page.scss'],
 })
+
 export class RegistroPage implements OnInit {
 
   formularioRegistro: FormGroup;
